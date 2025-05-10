@@ -88,6 +88,6 @@ The project follows the standard Angular project structure:
 
 This project is private and proprietary.
 
-## Authors
+## Author
 
-Petter0x1 | peterRefaat0
+peterRefaat0
