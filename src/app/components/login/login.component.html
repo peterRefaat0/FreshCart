@@ -1,0 +1,84 @@
+<section class="login-section">
+  <div class="container">
+    <div class="login-container">
+      <div class="login-header">
+        <h1>Welcome Back</h1>
+        <p>Please enter your details to sign in</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="handleLogin()" class="login-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input
+              formControlName="email"
+              id="email"
+              type="email"
+              placeholder="Enter your email"
+            />
+          </div>
+          <ng-container *ngIf="f['email'].errors && (f['email'].value.length || f['email'].touched)">
+            <p class="error-message" *ngIf="f['email'].getError('required')">
+              Email is required
+            </p>
+            <p class="error-message" *ngIf="f['email'].getError('email')">
+              Please enter a valid email
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input
+              #pass
+              formControlName="password"
+              id="password"
+              [type]="passwordShow ? 'text' : 'password'"
+              placeholder="Enter your password"
+            />
+            <button 
+              type="button" 
+              class="toggle-password"
+              (click)="passwordShow = !passwordShow"
+            >
+              <i class="fas" [class.fa-eye]="!passwordShow" [class.fa-eye-slash]="passwordShow"></i>
+            </button>
+          </div>
+          <ng-container *ngIf="f['password'].errors && (f['password'].value.length || f['password'].touched)">
+            <p class="error-message" *ngIf="f['password'].getError('required')">
+              Password is required
+            </p>
+            <p class="error-message" *ngIf="f['password'].getError('pattern')">
+              Password must be at least 6 characters
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="form-options">
+          <a routerLink="/forgotlogin" class="forgot-password">Forgot Password?</a>
+        </div>
+
+        <button 
+          type="submit" 
+          class="btn-login" 
+          [disabled]="loginForm.invalid || isLoading"
+        >
+          <span *ngIf="!isLoading">Sign In</span>
+          <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+        </button>
+
+        <p class="error-message text-center" *ngIf="errMsg">
+          {{ errMsg }}
+        </p>
+
+        <p class="signup-link">
+          Don't have an account? 
+          <a routerLink="/register">Sign up</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>

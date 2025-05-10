@@ -1,0 +1,43 @@
+<section class="brands-section">
+  <div class="container">
+    <div class="section-header">
+      <h1>Our Brands</h1>
+      <p>Discover our trusted partners and their products</p>
+    </div>
+
+    <div class="brands-grid">
+      <div class="brand-card" *ngFor="let brand of brandsData | paginate: {
+        id: 'brand',
+        itemsPerPage: pageSize,
+        currentPage: curentPage,
+        totalItems: totalItem
+      }" [routerLink]="['/brands', brand._id]">
+        <div class="brand-image">
+          <img [src]="brand.image" [alt]="brand.name" />
+        </div>
+        <div class="brand-info">
+          <h3>{{ brand.name }}</h3>
+          <span class="brand-products">{{ brand.products?.length || 0 }} Products</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pagination-container">
+      <pagination-controls
+        id="brand"
+        (pageChange)="pageChanged($event)"
+        (pageBoundsCorrection)="pageChanged($event)"
+        [maxSize]="9"
+        [directionLinks]="true"
+        [autoHide]="true"
+        [responsive]="true"
+        previousLabel="Previous"
+        nextLabel="Next"
+        screenReaderPaginationLabel="Pagination"
+        screenReaderPageLabel="page"
+        screenReaderCurrentLabel="You're on page"
+      >
+      </pagination-controls>
+    </div>
+  </div>
+</section>

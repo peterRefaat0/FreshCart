@@ -1,0 +1,154 @@
+<section class="register-section">
+  <div class="container">
+    <div class="register-container">
+      <div class="register-header">
+        <h1>Create Account</h1>
+        <p>Join us and start shopping today</p>
+      </div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="handleRegister()" class="register-form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input
+              formControlName="name"
+              id="name"
+              type="text"
+              placeholder="Enter your full name"
+            />
+          </div>
+          <ng-container *ngIf="f['name'].errors && (f['name'].value.length || f['name'].touched)">
+            <p class="error-message" *ngIf="f['name'].getError('required')">
+              Name is required
+            </p>
+            <p class="error-message" *ngIf="f['name'].getError('minlength')">
+              Name must be at least 3 characters
+            </p>
+            <p class="error-message" *ngIf="f['name'].getError('maxlength')">
+              Name cannot exceed 20 characters
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-group">
+            <i class="fas fa-envelope"></i>
+            <input
+              formControlName="email"
+              id="email"
+              type="email"
+              placeholder="Enter your email"
+            />
+          </div>
+          <ng-container *ngIf="f['email'].errors && (f['email'].value.length || f['email'].touched)">
+            <p class="error-message" *ngIf="f['email'].getError('required')">
+              Email is required
+            </p>
+            <p class="error-message" *ngIf="f['email'].getError('email')">
+              Please enter a valid email
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input
+              #pass
+              formControlName="password"
+              id="password"
+              [type]="passwordShow ? 'text' : 'password'"
+              placeholder="Create a password"
+            />
+            <button 
+              type="button" 
+              class="toggle-password"
+              (click)="passwordShow = !passwordShow"
+            >
+              <i class="fas" [class.fa-eye]="!passwordShow" [class.fa-eye-slash]="passwordShow"></i>
+            </button>
+          </div>
+          <ng-container *ngIf="f['password'].errors && (f['password'].value.length || f['password'].touched)">
+            <p class="error-message" *ngIf="f['password'].getError('required')">
+              Password is required
+            </p>
+            <p class="error-message" *ngIf="f['password'].getError('pattern')">
+              Password must be at least 6 characters
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="form-group">
+          <label for="rePassword">Confirm Password</label>
+          <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input
+              #repass
+              formControlName="rePassword"
+              id="rePassword"
+              [type]="rePasswordShow ? 'text' : 'password'"
+              placeholder="Confirm your password"
+            />
+            <button 
+              type="button" 
+              class="toggle-password"
+              (click)="rePasswordShow = !rePasswordShow"
+            >
+              <i class="fas" [class.fa-eye]="!rePasswordShow" [class.fa-eye-slash]="rePasswordShow"></i>
+            </button>
+          </div>
+          <ng-container *ngIf="f['rePassword'].errors && (f['rePassword'].value.length || f['rePassword'].touched)">
+            <p class="error-message" *ngIf="f['rePassword'].getError('required')">
+              Please confirm your password
+            </p>
+            <p class="error-message" *ngIf="f['rePassword'].getError('mismatch')">
+              Passwords do not match
+            </p>
+          </ng-container>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <div class="input-group">
+            <i class="fas fa-phone"></i>
+            <input
+              formControlName="phone"
+              id="phone"
+              type="tel"
+              placeholder="Enter your phone number"
+            />
+          </div>
+          <ng-container *ngIf="f['phone'].errors && (f['phone'].value.length || f['phone'].touched)">
+            <p class="error-message" *ngIf="f['phone'].getError('required')">
+              Phone number is required
+            </p>
+            <p class="error-message" *ngIf="f['phone'].getError('pattern')">
+              Please enter a valid phone number
+            </p>
+          </ng-container>
+        </div>
+
+        <button 
+          type="submit" 
+          class="btn-register" 
+          [disabled]="registerForm.invalid || isLoading"
+        >
+          <span *ngIf="!isLoading">Create Account</span>
+          <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+        </button>
+
+        <p class="error-message text-center" *ngIf="errMsg">
+          {{ errMsg }}
+        </p>
+
+        <p class="login-link">
+          Already have an account? 
+          <a routerLink="/login">Sign in</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>

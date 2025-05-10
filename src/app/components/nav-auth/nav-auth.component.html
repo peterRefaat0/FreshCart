@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <!-- App Logo -->
+    <a class="navbar-brand" routerLink="/">
+      <img src="./assets/images/freshcart-logo.svg" alt="freshCart" />
+    </a>
+
+    <!-- Navbar Toggler for Mobile -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Right Links -->
+      <div class="navbar-nav ms-auto">
+        <!-- Social Links -->
+        <div class="nav-item social-links">
+          <a href="https://www.facebook.com/peter.refaat.7169" target="_blank" class="nav-link">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="https://api.whatsapp.com/send?phone=201158267485" target="_blank" class="nav-link">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+
+        <!-- Login/Register Links -->
+        <div class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/login">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+        </div>
+
+        <div class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/register">
+            <i class="fas fa-user-plus"></i> Register
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

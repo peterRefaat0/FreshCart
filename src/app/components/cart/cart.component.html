@@ -1,0 +1,89 @@
+<!-- Cart Section -->
+<section class="cart-section" *ngIf="cartDetails.length; else emptyCart">
+  <div class="container">
+    <div class="cart-header">
+      <h1>Shopping Cart</h1>
+      <button (click)="clearCart()" class="btn-clear">
+        <i class="fas fa-trash"></i> Clear Cart
+      </button>
+    </div>
+
+    <div class="cart-items">
+      <div class="cart-item" *ngFor="let cartItem of cartDetails">
+        <div class="item-image">
+          <img [src]="cartItem.product.imageCover" [alt]="cartItem.product.title" />
+        </div>
+        
+        <div class="item-details">
+          <h3>{{ cartItem.product.title | cuttext : 10 }}</h3>
+          <div class="item-price">
+            <span class="price">${{ cartItem.price }}</span>
+            <span class="total">Total: ${{ cartItem.price * cartItem.count }}</span>
+          </div>
+        </div>
+
+        <div class="item-quantity">
+          <button 
+            class="quantity-btn" 
+            (click)="changeCount(-1, cartItem.count, cartItem.product._id)"
+            [disabled]="cartItem.count <= 1"
+          >
+            <i class="fas fa-minus"></i>
+          </button>
+          <span class="quantity">{{ cartItem.count }}</span>
+          <button 
+            class="quantity-btn" 
+            (click)="changeCount(1, cartItem.count, cartItem.product._id)"
+          >
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+
+        <button class="btn-remove" (click)="deleteProduct(cartItem.product._id)">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <div class="summary-item">
+        <span>Subtotal</span>
+        <span>${{ totalCartPrice }}</span>
+      </div>
+      <div class="summary-item">
+        <span>Shipping</span>
+        <span>Free</span>
+      </div>
+      <div class="summary-item total">
+        <span>Total</span>
+        <span>${{ totalCartPrice }}</span>
+      </div>
+    </div>
+
+    <div class="cart-actions">
+      <button routerLink="/shopaddress" [queryParams]="{ userid: userId }" class="btn-checkout">
+        <i class="fas fa-lock"></i> Proceed to Checkout
+        <img src="./assets/images/visa-1.svg" alt="visa card" />
+      </button>
+      <button routerLink="/allorders" class="btn-orders">
+        <i class="fas fa-shopping-bag"></i> View Orders
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Empty Cart Template -->
+<ng-template #emptyCart>
+  <section class="empty-cart">
+    <div class="container">
+      <div class="empty-cart-content">
+        <i class="fas fa-shopping-cart"></i>
+        <h2>Your Cart is Empty</h2>
+        <p>Looks like you haven't added any items to your cart yet.</p>
+        <button routerLink="/products" class="btn-shop">
+          <i class="fas fa-arrow-left"></i> Continue Shopping
+        </button>
+      </div>
+    </div>
+  </section>
+</ng-template>

@@ -1,0 +1,62 @@
+<section class="py-4" *ngIf="whishList.length > 0">
+  <div class="container">
+    <h3>My Wishlist</h3>
+
+    <div class="row g-4">
+      <div
+        *ngFor="let product of whishList"
+        class="col-sm-6 col-md-4 col-lg-3 col-xl-2"
+      >
+        <div class="product h-100">
+          <!-- Remove from wishlist -->
+          <i
+            class="fa-solid fa-heart heart"
+            (click)="removeFromWhish(product._id)"
+          ></i>
+
+          <header role="button" [routerLink]="['/productdetails', product._id]">
+            <img
+              class="w-100"
+              [src]="product.imageCover"
+              [title]="product.title"
+              [alt]="product.title"
+            />
+            <h3>{{ product.title | cuttext : 3 }}</h3>
+            <h4>{{ product.category.name }}</h4>
+
+            <div class="d-flex align-items-center justify-content-between">
+              <span>{{ product.price | currency : "e£" }}</span>
+              <div class="rating">
+                <i
+                  [class.rating-color]="product.ratingsAverage >= num"
+                  *ngFor="let num of [1, 2, 3, 4, 5]"
+                  class="fas fa-star"
+                ></i>
+                <span class="text-muted">{{ product.ratingsAverage }}</span>
+              </div>
+            </div>
+          </header>
+
+          <footer>
+            <button
+              (click)="addToCart(product._id)"
+              class="main-btn w-100"
+            >
+              Add To Cart
+            </button>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 text-center" *ngIf="whishList.length === 0">
+  <div class="container">
+    <h3>Your wishlist is empty</h3>
+    <p>Add items to your wishlist to see them here</p>
+    <button class="main-btn mt-3" routerLink="/products">
+      Browse Products
+    </button>
+  </div>
+</section>

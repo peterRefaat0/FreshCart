@@ -1,0 +1,70 @@
+<section class="orders-section" *ngIf="ordersData.length; else noOrders">
+  <div class="container">
+    <div class="orders-header">
+      <h1>My Orders</h1>
+      <p>Track and manage your orders</p>
+    </div>
+
+    <div class="orders-list">
+      <div class="order-card" *ngFor="let order of ordersData; index as i">
+        <div class="order-header">
+          <div class="order-info">
+            <span class="order-number">Order #{{ i + 1 }}</span>
+            <span class="order-date">{{ order.createdAt | date:'medium' }}</span>
+          </div>
+          <div class="order-status">
+            <span class="status-badge" [class.delivered]="order.isDelivered" [class.paid]="order.isPaid">
+              {{ order.isDelivered ? 'Delivered' : 'Processing' }}
+            </span>
+          </div>
+        </div>
+
+        <div class="order-items">
+          <div class="order-item" *ngFor="let cartItem of order.cartItems">
+            <div class="item-image">
+              <img [src]="cartItem.product.imageCover" [alt]="cartItem.product.title" />
+            </div>
+            <div class="item-details">
+              <h3>{{ cartItem.product.title | cuttext : 3 }}</h3>
+              <div class="item-meta">
+                <span class="quantity">Qty: {{ cartItem.count }}</span>
+                <span class="price">${{ cartItem.price }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="order-footer">
+          <div class="payment-info">
+            <span class="payment-method">
+              <i class="fas fa-credit-card"></i> {{ order.paymentMethodType }}
+            </span>
+            <span class="payment-status" [class.paid]="order.isPaid">
+              <i class="fas" [class.fa-check-circle]="order.isPaid" [class.fa-times-circle]="!order.isPaid"></i>
+              {{ order.isPaid ? 'Paid' : 'Pending' }}
+            </span>
+          </div>
+          <div class="order-total">
+            <span>Total</span>
+            <span class="total-amount">${{ order.totalOrderPrice }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #noOrders>
+  <section class="empty-orders">
+    <div class="container">
+      <div class="empty-content">
+        <i class="fas fa-shopping-bag"></i>
+        <h2>No Orders Yet</h2>
+        <p>Start shopping to see your orders here</p>
+        <button routerLink="/products" class="btn-shop">
+          <i class="fas fa-arrow-left"></i> Browse Products
+        </button>
+      </div>
+    </div>
+  </section>
+</ng-template>

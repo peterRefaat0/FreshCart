@@ -1,0 +1,156 @@
+// Variables
+$primary-color: #0aad0a;
+$secondary-color: #f8f9fa;
+$text-color: #333;
+$border-radius: 8px;
+$box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s ease;
+
+// Wishlist Container
+section {
+  padding: 2rem 0;
+  
+  h3 {
+    color: $text-color;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+}
+
+// Product Card
+.product {
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  transition: $transition;
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  // Heart Icon
+  .heart {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+    color: #ff4d4d;
+    cursor: pointer;
+    z-index: 2;
+    transition: $transition;
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  // Product Header
+  header {
+    padding: 1rem;
+    cursor: pointer;
+
+    img {
+      border-radius: $border-radius;
+      height: 200px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin: 0.5rem 0;
+      color: $text-color;
+      font-weight: 500;
+    }
+
+    h4 {
+      color: $primary-color;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    // Price and Rating
+    .d-flex {
+      margin-top: 0.5rem;
+      
+      span {
+        font-weight: 600;
+        color: $text-color;
+      }
+
+      .rating-color {
+        color: #ffc107;
+      }
+
+      .text-muted {
+        font-size: 0.8rem;
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  // Footer with Add to Cart Button
+  footer {
+    padding: 1rem;
+    border-top: 1px solid #eee;
+
+    .main-btn {
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      border-radius: $border-radius;
+      padding: 0.8rem;
+      font-weight: 500;
+      transition: $transition;
+      
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+      
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+// Empty State
+section:last-child {
+  text-align: center;
+  padding: 4rem 0;
+  
+  h3 {
+    color: $text-color;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: #666;
+    font-size: 1rem;
+  }
+}
+
+// Responsive Grid
+.row {
+  margin: 0 -0.5rem;
+  
+  .col-sm-6, .col-md-4, .col-lg-3, .col-xl-2 {
+    padding: 0.5rem;
+  }
+}
+
+// Loading State
+.loading {
+  text-align: center;
+  padding: 2rem;
+  
+  .spinner-border {
+    color: $primary-color;
+  }
+}

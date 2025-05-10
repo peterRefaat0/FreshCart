@@ -1,0 +1,161 @@
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="container-fluid">
+    <div class="row g-0">
+      <!-- Main Slider -->
+      <div class="col-lg-9">
+        <div class="main-slider">
+          <owl-carousel-o [options]="mainSlider">
+            <ng-template carouselSlide>
+              <div class="slide-item">
+                <img
+                  class="w-100"
+                  src="./assets/images/slider-image-1.jpeg"
+                  alt="Product Slide 1"
+                />
+                <div class="slide-content">
+                  <h2>Fresh Groceries</h2>
+                  <p>Shop the best quality products</p>
+                  <a routerLink="/products" class="btn btn-primary">Shop Now</a>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template carouselSlide>
+              <div class="slide-item">
+                <img
+                  class="w-100"
+                  src="./assets/images/slider-image-2.jpeg"
+                  alt="Product Slide 2"
+                />
+                <div class="slide-content">
+                  <h2>Special Offers</h2>
+                  <p>Get up to 50% off on selected items</p>
+                  <a routerLink="/products" class="btn btn-primary">View Deals</a>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template carouselSlide>
+              <div class="slide-item">
+                <img
+                  class="w-100"
+                  src="./assets/images/slider-image-3.jpeg"
+                  alt="Product Slide 3"
+                />
+                <div class="slide-content">
+                  <h2>New Arrivals</h2>
+                  <p>Discover our latest products</p>
+                  <a routerLink="/products" class="btn btn-primary">Explore</a>
+                </div>
+              </div>
+            </ng-template>
+          </owl-carousel-o>
+        </div>
+      </div>
+
+      <!-- Side Banners -->
+      <div class="col-lg-3 d-none d-lg-block">
+        <div class="side-banners">
+          <div class="banner-item">
+            <img
+              class="w-100"
+              src="./assets/images/slider-3.jpeg"
+              alt="Side Banner 1"
+            />
+            <div class="banner-content">
+              <h3>Fresh Fruits</h3>
+              <a routerLink="/products" class="btn btn-outline-light">Shop Now</a>
+            </div>
+          </div>
+          <div class="banner-item">
+            <img
+              class="w-100"
+              src="./assets/images/slider-1.jpeg"
+              alt="Side Banner 2"
+            />
+            <div class="banner-content">
+              <h3>Organic Products</h3>
+              <a routerLink="/products" class="btn btn-outline-light">Shop Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Categories Section -->
+<section class="categories-section" *ngIf="categories">
+  <div class="container">
+    <div class="section-header">
+      <h2>Shop Popular Categories</h2>
+      <p>Browse through our wide range of categories</p>
+    </div>
+    <div class="categories-slider">
+      <owl-carousel-o [options]="categoriesSlider">
+        <ng-container *ngFor="let category of categories">
+          <ng-template carouselSlide>
+            <div class="category-item">
+              <div class="category-image">
+                <img
+                  [src]="category.image"
+                  [alt]="category.name"
+                  [title]="category.name"
+                />
+              </div>
+              <h3>{{ category.name }}</h3>
+              <a routerLink="/products" class="category-link">View Products</a>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Products Section -->
+<section class="products-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Featured Products</h2>
+      <p>Discover our handpicked selection of best products</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-3 col-xl-2" *ngFor="let product of products">
+        <app-card
+          [cutTextNum]="2"
+          [product]="product"
+          [whish]="whishList"
+        ></app-card>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-item">
+          <i class="fas fa-truck"></i>
+          <h3>Free Shipping</h3>
+          <p>On orders over $100</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-item">
+          <i class="fas fa-undo"></i>
+          <h3>Easy Returns</h3>
+          <p>30 days return policy</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-item">
+          <i class="fas fa-lock"></i>
+          <h3>Secure Payment</h3>
+          <p>100% secure checkout</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

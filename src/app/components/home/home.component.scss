@@ -1,0 +1,390 @@
+// Variables
+$primary-color: #0aad0a;
+$secondary-color: #f8f9fa;
+$text-color: #333;
+$border-radius: 8px;
+$box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s ease;
+
+// Common Styles
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  h2 {
+    color: $text-color;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: #666;
+    font-size: 1.1rem;
+  }
+}
+
+// Hero Section
+.hero-section {
+  padding: 2rem 0;
+  margin-top: 76px; // Add space for fixed navbar
+  
+  .container {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+  
+  .main-slider {
+    width: 100%;
+    position: relative;
+    
+    .slide-item {
+      position: relative;
+      border-radius: $border-radius;
+      overflow: hidden;
+      width: 100%;
+      
+      img {
+        height: 500px;
+        object-fit: cover;
+        width: 100%;
+      }
+      
+      .slide-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        width: 80%;
+        z-index: 2;
+        
+        h2 {
+          font-size: 2.5rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        p {
+          font-size: 1.2rem;
+          margin-bottom: 1.5rem;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn {
+          padding: 0.8rem 2rem;
+          font-size: 1.1rem;
+          font-weight: 500;
+          border-radius: 30px;
+          background: $primary-color;
+          border: none;
+          transition: $transition;
+          
+          &:hover {
+            background: darken($primary-color, 10%);
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
+  
+  .side-banners {
+    .banner-item {
+      position: relative;
+      border-radius: $border-radius;
+      overflow: hidden;
+      height: 240px;
+      margin-bottom: 1rem;
+      
+      img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+      
+      .banner-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1.5rem;
+        background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        color: white;
+        
+        h3 {
+          font-size: 1.2rem;
+          margin-bottom: 1rem;
+        }
+        
+        .btn {
+          padding: 0.5rem 1.5rem;
+          border-radius: 20px;
+          font-size: 0.9rem;
+          
+          &:hover {
+            background: white;
+            color: $primary-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Categories Section
+.categories-section {
+  padding: 4rem 0;
+  background: $secondary-color;
+  
+  .categories-slider {
+    .category-item {
+      text-align: center;
+      padding: 1rem;
+      
+      .category-image {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1rem;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: $box-shadow;
+        transition: $transition;
+        
+        &:hover {
+          transform: scale(1.05);
+        }
+        
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      
+      h3 {
+        color: $text-color;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .category-link {
+        color: $primary-color;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: $transition;
+        
+        &:hover {
+          color: darken($primary-color, 10%);
+        }
+      }
+    }
+  }
+}
+
+// Products Section
+.products-section {
+  padding: 4rem 0;
+  
+  .row {
+    margin: 0 -0.5rem;
+    
+    > div {
+      padding: 0.5rem;
+    }
+  }
+}
+
+// Features Section
+.features-section {
+  padding: 4rem 0;
+  background: $secondary-color;
+  
+  .feature-item {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    transition: $transition;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    i {
+      font-size: 2.5rem;
+      color: $primary-color;
+      margin-bottom: 1rem;
+    }
+    
+    h3 {
+      color: $text-color;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      color: #666;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+  }
+}
+
+// Owl Carousel Custom Styles
+::ng-deep {
+  .owl-carousel {
+    width: 100%;
+    position: relative;
+    
+    .owl-stage-outer {
+      width: 100%;
+      overflow: hidden;
+    }
+    
+    .owl-stage {
+      width: 100%;
+      display: flex;
+    }
+    
+    .owl-item {
+      width: 100%;
+    }
+  }
+  
+  .owl-nav {
+    button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.8) !important;
+      width: 40px;
+      height: 40px;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      transition: $transition;
+      z-index: 2;
+      
+      &:hover {
+        background: white !important;
+      }
+      
+      &.owl-prev {
+        left: 20px;
+      }
+      
+      &.owl-next {
+        right: 20px;
+      }
+    }
+  }
+  
+  .owl-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    
+    .owl-dot {
+      span {
+        background: rgba(255, 255, 255, 0.5) !important;
+        width: 10px;
+        height: 10px;
+        margin: 5px;
+        border-radius: 50%;
+        transition: $transition;
+      }
+      
+      &.active span {
+        background: white !important;
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+}
+
+// Responsive Styles
+@media (max-width: 991.98px) {
+  .hero-section {
+    margin-top: 66px;
+    
+    .main-slider {
+      .slide-item {
+        img {
+          height: 400px;
+        }
+        
+        .slide-content {
+          h2 {
+            font-size: 2rem;
+          }
+          
+          p {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+  
+  .section-header {
+    h2 {
+      font-size: 1.8rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-section {
+    margin-top: 56px;
+    
+    .main-slider {
+      .slide-item {
+        img {
+          height: 300px;
+        }
+        
+        .slide-content {
+          h2 {
+            font-size: 1.5rem;
+          }
+          
+          p {
+            font-size: 0.9rem;
+          }
+          
+          .btn {
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+  
+  .features-section {
+    .feature-item {
+      padding: 1.5rem;
+      
+      i {
+        font-size: 2rem;
+      }
+      
+      h3 {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

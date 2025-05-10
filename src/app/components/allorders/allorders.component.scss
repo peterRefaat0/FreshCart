@@ -1,0 +1,291 @@
+.allorders {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+// Variables
+$primary-color: #0aad0a;
+$secondary-color: #f8f9fa;
+$text-color: #333;
+$border-radius: 8px;
+$box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s ease;
+
+// Orders Section
+.orders-section {
+  padding: 2rem 0;
+  margin-top: 76px;
+  background: $secondary-color;
+  min-height: calc(100vh - 76px);
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+// Orders Header
+.orders-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    color: $text-color;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #666;
+    font-size: 1rem;
+  }
+}
+
+// Orders List
+.orders-list {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+// Order Card
+.order-card {
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+  transition: $transition;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Order Header
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #eee;
+
+  .order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .order-number {
+      font-weight: 600;
+      color: $text-color;
+    }
+
+    .order-date {
+      font-size: 0.9rem;
+      color: #666;
+    }
+  }
+
+  .status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: #ffc107;
+    color: #000;
+
+    &.delivered {
+      background: $primary-color;
+      color: white;
+    }
+
+    &.paid {
+      background: #28a745;
+      color: white;
+    }
+  }
+}
+
+// Order Items
+.order-items {
+  padding: 1rem;
+
+  .order-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .item-image {
+      width: 80px;
+      height: 80px;
+      border-radius: $border-radius;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .item-details {
+      flex: 1;
+
+      h3 {
+        font-size: 1rem;
+        color: $text-color;
+        margin-bottom: 0.5rem;
+      }
+
+      .item-meta {
+        display: flex;
+        justify-content: space-between;
+        color: #666;
+        font-size: 0.9rem;
+
+        .quantity {
+          color: #666;
+        }
+
+        .price {
+          font-weight: 500;
+          color: $text-color;
+        }
+      }
+    }
+  }
+}
+
+// Order Footer
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-top: 1px solid #eee;
+
+  .payment-info {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+
+    .payment-method {
+      color: #666;
+      
+      i {
+        margin-right: 0.5rem;
+        color: $text-color;
+      }
+    }
+
+    .payment-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #dc3545;
+
+      &.paid {
+        color: #28a745;
+      }
+
+      i {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .order-total {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 500;
+
+    .total-amount {
+      font-size: 1.2rem;
+      color: $primary-color;
+    }
+  }
+}
+
+// Empty Orders
+.empty-orders {
+  padding: 4rem 0;
+  margin-top: 76px;
+  text-align: center;
+  background: $secondary-color;
+  min-height: calc(100vh - 76px);
+
+  .empty-content {
+    max-width: 500px;
+    margin: 0 auto;
+
+    i {
+      font-size: 4rem;
+      color: #ddd;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: $text-color;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .btn-shop {
+      background: $primary-color;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: $border-radius;
+      font-size: 1.1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: $transition;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .orders-section {
+    padding: 1rem 0;
+  }
+
+  .order-card {
+    .order-header {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .order-footer {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+
+      .payment-info {
+        justify-content: center;
+      }
+    }
+  }
+}

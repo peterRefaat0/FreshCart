@@ -1,0 +1,66 @@
+<div class="product card shadow-sm border-0">
+    <div class="product-area position-relative">
+      <!-- Wishlist Button -->
+      <button
+        *ngIf="!whish.includes(product._id)"
+        (click)="addToWhish(product._id)"
+        class="btn btn-light position-absolute top-0 end-0 m-2 p-2 rounded-circle"
+        title="Add to Wishlist"
+      >
+        <i class="fas fa-heart text-danger"></i>
+      </button>
+      <button
+        *ngIf="whish.includes(product._id)"
+        (click)="removeFromWhish(product._id)"
+        class="btn btn-light position-absolute top-0 end-0 m-2 p-2 rounded-circle"
+        title="Remove from Wishlist"
+      >
+        <i class="fa-solid fa-heart-crack text-danger"></i>
+      </button>
+
+      <!-- Product Image -->
+      <header role="button" [routerLink]="['/products', product._id]">
+        <img
+          loading="lazy"
+          class="card-img-top"
+          [src]="product.imageCover"
+          [alt]="product.title"
+          [title]="product.title"
+        />
+      </header>
+
+      <!-- Product Details -->
+      <div class="card-body text-center">
+        <h4 class="h6 text-main mb-1">{{ product.category.name }}</h4>
+        <h3 class="h6 small text-truncate">{{ product.title | cuttext : cutTextNum }}</h3>
+        <p class="text-muted small mb-2">
+          {{ product.price | currency : "EGP" }}
+        </p>
+
+        <!-- Ratings -->
+        <div class="d-flex justify-content-center align-items-center mb-2">
+          <ul class="d-flex mb-0 list-unstyled">
+            <li *ngFor="let num of [1, 2, 3, 4, 5]">
+              <i
+                *ngIf="num <= product.ratingsAverage"
+                class="fas fa-star text-warning"
+              ></i>
+            </li>
+            <li *ngIf="product.ratingsAverage % 1 != 0">
+              <i class="fas fa-star-half text-warning"></i>
+            </li>
+          </ul>
+          <span class="ms-2 small">({{ product.ratingsAverage }})</span>
+        </div>
+
+        <!-- Add to Cart Button -->
+        <button
+          (click)="addToCart(product._id)"
+          class="btn btn-primary w-100"
+          title="Add to Cart"
+        >
+          + Add To Cart
+        </button>
+      </div>
+    </div>
+  </div>

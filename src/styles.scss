@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+// Color Variables
+$primary-color: hsl(120, 98%, 42%);
+$primary-hover-color: darken($primary-color, 10%);
+$secondary-color: #ffc908;
+$light-color: #f0f3f2;
+$dark-color: #333333;
+$success-color: #0aad0a;
+$error-color: #e63946;
+$info-color: #007bff;
+
+// Shadow Variables
+$light-shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+    rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+    rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+$hover-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;
+
+// Font Variables
+$font-family: "Space Mono";
+$main-transition: 0.3s;
+
+// Scrollbar Styles
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: $light-color;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: $primary-color;
+    border-radius: 50px;
+    box-shadow: 0 0 20px 50px $primary-color;
+}
+
+// Link Styles
+.nav-link {
+    transition: color $main-transition;
+    &:hover {
+        color: $primary-hover-color;
+    }
+}
+
+.active-link {
+    background-color: $primary-color;
+    color: #fff !important;
+    border-radius: 5px;
+}
+
+// Typography
+body {
+    font-family: $font-family;
+}
+
+.font-sm {
+    font-size: 12px;
+}
+
+.text-primary {
+    color: $primary-color;
+}
+
+.text-secondary {
+    color: $secondary-color;
+}
+
+.text-light {
+    color: $light-color;
+}
+
+.text-dark {
+    color: $dark-color;
+}
+
+// Backgrounds
+.bg-primary {
+    background-color: $primary-color !important;
+}
+
+.bg-light {
+    background-color: $light-color !important;
+}
+
+// Buttons
+.main-btn {
+    border: unset;
+    cursor: pointer;
+    color: #fff !important;
+    background-color: $primary-color !important;
+    padding: 4px 8px;
+    transition: background-color $main-transition, box-shadow $main-transition;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: $primary-hover-color !important;
+        box-shadow: $hover-shadow;
+    }
+
+    &:disabled {
+        background-color: lighten($primary-color, 40%) !important;
+        color: #ffffff8e !important;
+        cursor: not-allowed;
+    }
+}
+
+// Input Focus
+input:focus {
+    box-shadow: 0 0 0 0.25rem rgba($success-color, 0.39) !important;
+    border-color: $primary-color !important;
+}
+
+// Product Card
+.product {
+    padding: 6px 9px;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: box-shadow $main-transition, border $main-transition;
+
+    &:hover {
+        box-shadow: $hover-shadow;
+        border: solid 1px $primary-color;
+
+        .add-btn {
+            opacity: 1;
+            transform: translateY(0%);
+        }
+    }
+
+    .add-btn {
+        transition: transform 1s, opacity 1s, background-color 1s;
+        transform: translateY(100%);
+        opacity: 0;
+    }
+}
+
+// Pagination
+.ngx-pagination .current {
+    background: $primary-color !important;
+    border-radius: 5px !important;
+}
+
+.ngx-pagination a:hover,
+.ngx-pagination button:hover {
+    background: lighten($success-color, 40%) !important;
+    border-radius: 5px !important;
+    color: $primary-color !important;
+}
+
+.ngx-pagination a,
+.ngx-pagination button {
+    color: $primary-color !important;
+}
+
+// Toast Notifications
+.toast-success {
+    position: fixed !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    background-color: $success-color !important;
+    color: #fff !important;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: $light-shadow;
+}
